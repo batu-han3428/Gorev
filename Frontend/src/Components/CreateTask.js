@@ -9,6 +9,7 @@ import { post } from "jquery";
 const CreateTask = (props) => {
 
     const [appointedPersonnel, setAppointedPersonnel] = useState("");
+    const [expiryTime, setExpiryTime] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [urgency, setUrgency] = useState(false);
@@ -107,7 +108,7 @@ const CreateTask = (props) => {
                                     <div className="form-fields">
                                         <div className="form-field">
                                             <select onChange={(e) => setAppointedPersonnel(e.target.value)} defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
-                                                <option value="DEFAULT" >Personel Ata</option>
+                                                <option value="DEFAULT">Personel Ata</option>
                                                 {employees.length > 0 && employees.map((item, index)=>{
                                                     return(
                                                         <option key={index} value={item.id}>{item.employeeName}</option>
@@ -116,7 +117,7 @@ const CreateTask = (props) => {
                                             </select>
                                         </div>
                                         <div className="form-field">
-                                            <input type="date" id="start" name="trip-start"
+                                            <input onChange={(e) => console.log(e.target.value)} type="date" id="start" name="trip-start"
                                             value="2018-07-22"
                                             min="2018-01-01" max="2018-12-31"></input>
                                         </div>
