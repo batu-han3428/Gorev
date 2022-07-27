@@ -9,7 +9,7 @@ namespace DOMAIN.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"server=sqltstsrv;Database=TaskProject;User Id=bisuser;Password=p@ssword1;");
+            optionsBuilder.UseSqlServer(@"server=DESKTOP-J0S4R9L;Database=TaskProject;Trusted_Connection=true");
         }
 
         public DbSet<User> Users { get; set; }

@@ -56,8 +56,7 @@ namespace BL.Concrete
             }
             return 0;
         }
-        Tuple<int, string, string> person =
-                        new Tuple<int, string, string>(1, "Steve", "Jobs");
+
         public Tuple<int, Token> UserLogin(UserLoginDTO userLoginDTO, IConfiguration configuration)
         {
             if (!_context.Users.Any(x => x.Email == userLoginDTO.Email && x.Password == _sha.Encrypt(userLoginDTO.Password)))

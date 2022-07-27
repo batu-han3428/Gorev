@@ -41,7 +41,7 @@ namespace Common.Helpers
             securityToken.Payload["name"] = user.Name;
             securityToken.Payload["roles"] = claims;
             securityToken.Payload["mail"] = user.Email;
-            securityToken.Payload["companyId"] = user.Companies.Id;
+            securityToken.Payload["companyId"] = user.Companies == null?"": user.Companies.Id;
 
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();

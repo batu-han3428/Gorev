@@ -1869,25 +1869,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bfindik\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\batu_\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\BL\\BL.csproj",
+      "projectUniqueName": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\BL\\BL.csproj",
       "projectName": "BL",
-      "projectPath": "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\BL\\BL.csproj",
-      "packagesPath": "C:\\Users\\bfindik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\BL\\obj\\",
+      "projectPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\BL\\BL.csproj",
+      "packagesPath": "C:\\Users\\batu_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\BL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\bfindik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\batu_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1902,11 +1900,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\Common\\Common.csproj"
+            "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\Common\\Common.csproj"
             },
-            "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\bfindik\\Desktop\\Yeni klasör (3)\\Gorev\\Backend\\DAL\\DAL.csproj"
+            "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\DAL\\DAL.csproj"
             }
           }
         }
@@ -1935,7 +1933,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
