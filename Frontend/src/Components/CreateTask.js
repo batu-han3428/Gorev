@@ -31,7 +31,7 @@ const CreateTask = (props) => {
 
   
     const inputControl = () => {
-      if(title == "" || description == "" || appointedPersonnel == "")
+      if(title == "" || description == "" || appointedPersonnel == "" || expiryTime == "")
         return true;
       else
         return false;
@@ -67,7 +67,7 @@ const CreateTask = (props) => {
 
     const createTask = () =>{
         if(inputControl())
-            swal("Başlık, Açıklama ve atama kısmı zorunludur!", "", "warning");
+            swal("Başlık, Açıklama, Atama ve Bitiş Zamanı zorunludur!", "", "warning");
         else{
             getBase64(document);
         
@@ -117,8 +117,7 @@ const CreateTask = (props) => {
                                             </select>
                                         </div>
                                         <div className="form-field">
-                                            <input onChange={(e) => console.log(e.target.value)} type="date" id="start" name="trip-start"
-                                            value="2018-07-22"
+                                            <input onChange={(e) => setExpiryTime(e.target.value)} type="date" id="start" name="trip-start"
                                             min="2018-01-01" max="2018-12-31"></input>
                                         </div>
                                         <div className="form-field">
