@@ -10,5 +10,6 @@ namespace BL.Models
     public interface ITaskServices
     {
         Tuple<int, string, string> CreateTask(DOMAIN.Models.Task task);
+        List<ListTaskViewModel> ListTask(int UserId);
     }
 }

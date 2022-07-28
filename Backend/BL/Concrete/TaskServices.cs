@@ -28,5 +28,10 @@ namespace BL.Concrete
             else
                 return new Tuple<int ,string, string>(0, "", "");
         }
+
+        public List<ListTaskViewModel> ListTask(int UserId)
+        {
+            return _TaskRepository.ListTask(UserId);
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace DOMAIN.Context
         public DbSet<DOMAIN.Models.Task> Tasks { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<Companies> Companies { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserRole>()
@@ -48,5 +49,13 @@ namespace DOMAIN.Context
             new DbInitializer(modelBuilder).Seed();
         }
 
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            configurationBuilder.Properties<byte[]>()
+                .HaveConversion<byte[]>()
+                .HaveMaxLength(255);
+
+
+        }
     }
 }

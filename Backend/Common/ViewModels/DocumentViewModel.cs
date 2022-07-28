@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Common.ViewModels
 {
-    public class CreateTaskViewModel
+    public class DocumentViewModel
     {
-        public string Constituent { get; set; }
-
+        public string Name { get; set; }
+        public byte[] Data { get; set; }
     }
 }

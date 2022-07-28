@@ -21,6 +21,8 @@ namespace MAP
             dest => dest.EmployeeName,
             opt => opt.MapFrom(src => src.Name)
             );
+            CreateMap<DOMAIN.Models.Task, Common.ViewModels.ListTaskViewModel>();
+            CreateMap<DOMAIN.Models.Document, Common.ViewModels.DocumentViewModel>();
         }
     }
 }

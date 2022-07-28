@@ -9,6 +9,7 @@ using BL.Models;
 using System.Net;
 using Common.Helpers;
 using Common.Models;
+using Common.ViewModels;
 
 namespace WebApi.Controllers
 {
@@ -83,6 +84,16 @@ namespace WebApi.Controllers
                 
             else
                 return HttpStatusCode.BadRequest;
+        }
+
+        [HttpGet("[action]")]
+        //[Authorize]
+        public IActionResult ListTask(int UserId)
+        {
+            if (UserId == 0) return BadRequest();
+
+
+            return Ok(_taskServices.ListTask(UserId));
         }
     }
 }
