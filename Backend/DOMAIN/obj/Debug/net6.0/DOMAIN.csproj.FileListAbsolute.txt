@@ -40,3 +40,17 @@ C:\Users\batu_\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\refint\DOMAIN.dll
 C:\Users\batu_\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.pdb
 C:\Users\batu_\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.genruntimeconfig.cache
 C:\Users\batu_\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\ref\DOMAIN.dll
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\bin\Debug\net6.0\DOMAIN.deps.json
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\bin\Debug\net6.0\DOMAIN.runtimeconfig.json
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\bin\Debug\net6.0\DOMAIN.dll
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\bin\Debug\net6.0\DOMAIN.pdb
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.csproj.AssemblyReference.cache
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.AssemblyInfoInputs.cache
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.AssemblyInfo.cs
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.csproj.CoreCompileInputs.cache
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.dll
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\refint\DOMAIN.dll
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.pdb
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\DOMAIN.genruntimeconfig.cache
+C:\Users\bfindik\Desktop\Gorev\Backend\DOMAIN\obj\Debug\net6.0\ref\DOMAIN.dll

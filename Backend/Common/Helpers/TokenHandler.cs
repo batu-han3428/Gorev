@@ -19,11 +19,11 @@ namespace Common.Helpers
         }
         public Token CreateAccessToken(User user)
         {
-            List<Claim> claims = new List<Claim>();
+            List<string> roles = new List<string>();
 
             foreach (var item in user.UserRoles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, item.Role.Name));
+                roles.Add(item.Role.Name);
             }
 
             Token tokenInstance = new Token();
@@ -39,9 +39,10 @@ namespace Common.Helpers
 
             securityToken.Payload["isAuthenticated"] = true;
             securityToken.Payload["name"] = user.Name;
-            securityToken.Payload["roles"] = claims;
+            securityToken.Payload["roles"] = roles;
             securityToken.Payload["mail"] = user.Email;
             securityToken.Payload["companyId"] = user.Companies == null?"": user.Companies.Id;
+            securityToken.Payload["userId"] = user.Id;
 
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();

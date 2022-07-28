@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Text;
-using WebApi.Helpers;
+using Common.Helpers;
 
 namespace WebApi.Controllers
 {

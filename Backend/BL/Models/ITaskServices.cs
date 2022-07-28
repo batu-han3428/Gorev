@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace BL.Models
 {
     public interface ITaskServices
     {
-        int CreateTask(DOMAIN.Models.Task task);
+        Tuple<int, string, string> CreateTask(DOMAIN.Models.Task task);
     }
 }

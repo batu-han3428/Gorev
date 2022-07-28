@@ -1,4 +1,5 @@
 ﻿using BL.Models;
+using Common.ViewModels;
 using DAL.Models;
 using DOMAIN.Context;
 using Microsoft.EntityFrameworkCore;
@@ -20,13 +21,12 @@ namespace BL.Concrete
             _context = new SqlDbContext();
         }
 
-        public int CreateTask(DOMAIN.Models.Task task)
+        public Tuple<int, string, string> CreateTask(DOMAIN.Models.Task task)
         {
             if (_context.UserRoles.Any(x => x.UserId == task.UserId && x.RoleId == 2))
-                return _TaskRepository.Add(task);
-
+                return new Tuple<int, string, string>(_TaskRepository.Add(task), _context.Users.Where(x=>x.Id == task.Constituent).Select(x=>x.Name).FirstOrDefault().ToString(), _context.Users.Where(x => x.Id == task.UserId).Select(x => x.Email).FirstOrDefault().ToString());
             else
-                return 0;
+                return new Tuple<int ,string, string>(0, "", "");
         }
     }
 }

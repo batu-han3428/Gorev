@@ -1,11 +1,11 @@
 ﻿using System.Net;
 using System.Net.Mail;
 
-namespace WebApi.Helpers
+namespace Common.Helpers
 {
     public class EmailHelper
     {
-        public bool SendEmail(string email, string message, string senderMail, string senderPassword, string subject)
+        public bool SendEmail(string email, string message, string senderMail, string senderPassword, string subject, string documentName = null, byte[] documentByte = null)
         {
             #region MailMessage
             MailMessage mailMessage = new MailMessage();
@@ -14,8 +14,14 @@ namespace WebApi.Helpers
             mailMessage.Subject = subject;
             mailMessage.Body = message;
             mailMessage.IsBodyHtml = true;
+            if(documentByte != null)
+            {
+                Attachment attachment;
+                attachment = new Attachment(new MemoryStream(documentByte), documentName);
+                mailMessage.Attachments.Add(attachment);
+            }
             #endregion
-            
+
             #region SmtpSettings
             SmtpClient client = new SmtpClient();
             client.Credentials = new NetworkCredential(senderMail, senderPassword);

@@ -17,6 +17,6 @@ namespace DOMAIN.Models
         public bool Urgency { get; set; }
         public int Constituent { get; set; }
         public DateTime CompletionTime { get; set; }
-        public List<Document> Documents { get; set; }
+        public List<Document>? Documents { get; set; }
     }
 }
