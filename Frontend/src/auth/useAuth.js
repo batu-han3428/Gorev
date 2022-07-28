@@ -14,20 +14,16 @@ export const onLogin = (cookieName = null) => {
     if(exp < new(Date)){
       return false;
     }
-
-    let mainRoles  = [...auth.roles];
-    let roles = [];
-    mainRoles.forEach(role=>roles.push(role.Value));
-
-
+   
     return {
       token:cookie.value,
       name:auth.name,
-      roles:roles,
+      roles:[...auth.roles],
       isAuthenticated:auth.isAuthenticated,
       exp:exp,
       mail:auth.mail,
-      companyId:auth.companyId
+      companyId:auth.companyId,
+      userId:auth.userId
     };
   }
   return false;

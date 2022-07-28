@@ -1,8 +1,15 @@
 import Axios from 'axios';
 
-export const post = async (url, value) =>{
+export const post = async (url, value, token = null) =>{
     try {
-        return await (await Axios.post('https://localhost:7261/api/'+url, value,{ withCredentials: true })).data; 
+        var config = {
+            headers: { 
+              'Authorization': `Bearer ${token}`, 
+              'Content-Type': 'application/json'              
+            }
+          };
+
+        return await (await Axios.post('https://localhost:7261/api/'+url, value, config)).data; 
     }
     catch(err) {
         return {data:"Beklenmeyen bir hata oluştu!"}

@@ -2,25 +2,26 @@ import React, { useEffect, useState } from "react";
 import {connect} from 'react-redux';
 import './CreateTask.css';
 import swal from 'sweetalert';
-import {get} from '../helpers/api';
-import { post } from "jquery";
+import { get, post } from '../helpers/api';
+
 
 
 const CreateTask = (props) => {
 
-    const [appointedPersonnel, setAppointedPersonnel] = useState("");
-    const [expiryTime, setExpiryTime] = useState("");
+    const [appointedPersonnel, setAppointedPersonnel] = useState("DEFAULT");
+    const [expiryTime, setExpiryTime] = useState(new Date().toISOString().slice(0, 10));
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [urgency, setUrgency] = useState(false);
     const [priority, setPriority] = useState(false);
-    const [document, setDocument] = useState(null);
+    const [documentName, setDocumentName] = useState("");
+    const [documentBase64, setDocumentBase64] = useState("");
     const [employees, setEmployees] = useState([]);
     
     useEffect(()=>{
+        setExpiryTime(new Date().toISOString().slice(0, 10))
         get('User/GetEmployees/','CompanyId',props.User.companyId)
         .then(resp=>{
-            console.log(resp)
           if(resp.data === "Beklenmeyen bir hata oluştu!")
             swal(resp.data, "", "error");
           else{
@@ -38,50 +39,59 @@ const CreateTask = (props) => {
     }
 
     function getBase64(file) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-          return reader.result;
-        };
-        reader.onerror = function (error) {
-          console.log('Error: ', error);
-        };
-     }
-     
-    //  {
-    //     "userId": 0,
-    //     "title": "string",
-    //     "description": "string",
-    //     "priority": true,
-    //     "urgency": true,
-    //     "constituent": 0,
-    //     "completionTime": "2022-07-27T11:36:25.412Z",
-    //     "documentDTOs": [
-    //       {
-    //         "name": "string",
-    //         "data": "string"
-    //       }
-    //     ]
-    //   }
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result.split("base64,")[1]);
+            reader.onerror = error => reject(error);
+        });
+    }
 
+    const clearInputs = () =>{
+        setAppointedPersonnel("DEFAULT");
+        setExpiryTime(new Date().toISOString().slice(0, 10));
+        setTitle("");
+        setDescription("");
+        setUrgency(false);
+        setPriority(false);
+        setDocumentName("");
+        setDocumentBase64("");
+    }
 
     const createTask = () =>{
         if(inputControl())
             swal("Başlık, Açıklama, Atama ve Bitiş Zamanı zorunludur!", "", "warning");
         else{
-            getBase64(document);
-        
+            let value = {
+                userId: appointedPersonnel, 
+                title:title, 
+                description:description, 
+                urgency: urgency, 
+                priority:priority, 
+                constituent: props.User.userId,
+                completionTime:expiryTime,
+                documentDTOs:null
+            };
+            if(documentBase64 !== "")
+                value.documentDTOs = [{
+                    name:documentName,
+                    data:documentBase64
+                }]
 
-
-            // post('Task/CreateTask',
-            //     {
-            //         UserId: appointedPersonnel, 
-            //         Title:title, 
-            //         Description:description, 
-            //         Urgency: urgency, 
-            //         Priority:priority, 
-            //         Constituent: props.User.companyId })
-            // .then(resp=>{
+            post('Task/CreateTask',
+                value,props.User.token)
+            .then(resp=>{
+                if(resp === 200){
+                    swal("Kayıt Başarılı", "", "success");
+                    clearInputs()
+                }
+                else if(resp === 400)
+                    swal("Beklenmeyen Bir Hata Oluştu", "", "error");
+                else if(resp === 403)
+                    swal("Yetkiniz Yok", "", "error");
+                else
+                    swal(resp.data, "", "error");
+            })
         }
 
     }
@@ -101,13 +111,13 @@ const CreateTask = (props) => {
                         </div>
                         <div className="card-body">
                             <div className="register-form-container">
-                                <form action="">
+                                <form action="" onSubmit={(e)=>e.preventDefault()}>
                                     <h1 className="form-title">
                                     Görev
                                     </h1>
                                     <div className="form-fields">
                                         <div className="form-field">
-                                            <select onChange={(e) => setAppointedPersonnel(e.target.value)} defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
+                                            <select onChange={(e) => setAppointedPersonnel(e.target.value)} defaultValue={appointedPersonnel} className="form-select" aria-label="Default select example">
                                                 <option value="DEFAULT">Personel Ata</option>
                                                 {employees.length > 0 && employees.map((item, index)=>{
                                                     return(
@@ -117,32 +127,32 @@ const CreateTask = (props) => {
                                             </select>
                                         </div>
                                         <div className="form-field">
-                                            <input onChange={(e) => setExpiryTime(e.target.value)} type="date" id="start" name="trip-start"
-                                            min="2018-01-01" max="2018-12-31"></input>
+                                            <input value={expiryTime} onChange={(e) => setExpiryTime(e.target.value)} type="date" id="start" name="trip-start"
+                                            ></input>
                                         </div>
                                         <div className="form-field">
-                                            <input onChange={(e)=>setTitle(e.target.value?e.target.value[0].toUpperCase()+e.target.value.substring(1):"")} type="text" placeholder="Başlık" required pattern="[a-zA-Z]+" title="Name can only contain letters."/>
+                                            <input value={title} onChange={(e)=>setTitle(e.target.value?e.target.value[0].toUpperCase()+e.target.value.substring(1):"")} type="text" placeholder="Başlık" required pattern="[a-zA-Z]+" title="Name can only contain letters."/>
                                         </div>
                                         <div className="form-field">
                                             <div className="mb-3">
                                                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Açıklama</label>
-                                                <textarea onChange={(e)=>setDescription(e.target.value?e.target.value[0].toUpperCase()+e.target.value.substring(1):"")} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                <textarea value={description} onChange={(e)=>setDescription(e.target.value?e.target.value[0].toUpperCase()+e.target.value.substring(1):"")} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                             </div>
                                         </div>
                                         <div className="form-check form-switch">
-                                            <input onChange={(e)=>setUrgency(e.target.checked)} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                                            <input checked={urgency} onChange={(e)=>setUrgency(e.target.checked)} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
                                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Aciliyet</label>
                                         </div>
                                         <div className="form-check form-switch">
-                                            <input onChange={(e)=>setPriority(e.target.checked)} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                                            <input checked={priority} onChange={(e)=>setPriority(e.target.checked)} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
                                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Öncelik</label>
                                         </div>
                                         <div className="mb-3">
-                                            <input onChange={(e)=>setDocument(e.target.files[0])} className="form-control" type="file" id="formFile"/>
+                                            <input onChange={(e)=>{setDocumentName(e.target.files[0].name); getBase64(e.target.files[0]).then(x=>setDocumentBase64(x))}} className="form-control" type="file" id="formFile"/>
                                         </div>
                                     </div>
                                     <div className="form-buttons">
-                                        <button className="button">Oluştur</button>
+                                        <button onClick={createTask} type="button" className="button">Oluştur</button>
                                     </div>
                                 </form>
                             </div>
