@@ -1832,23 +1832,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\batu_\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\bfindik\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\Common\\Common.csproj",
+      "projectUniqueName": "C:\\Users\\bfindik\\Desktop\\Gorev\\Backend\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\Common\\Common.csproj",
-      "packagesPath": "C:\\Users\\batu_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\Common\\obj\\",
+      "projectPath": "C:\\Users\\bfindik\\Desktop\\Gorev\\Backend\\Common\\Common.csproj",
+      "packagesPath": "C:\\Users\\bfindik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bfindik\\Desktop\\Gorev\\Backend\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\batu_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bfindik\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1863,8 +1865,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\DOMAIN\\DOMAIN.csproj": {
-              "projectPath": "C:\\Users\\batu_\\Desktop\\Gorev\\Backend\\DOMAIN\\DOMAIN.csproj"
+            "C:\\Users\\bfindik\\Desktop\\Gorev\\Backend\\DOMAIN\\DOMAIN.csproj": {
+              "projectPath": "C:\\Users\\bfindik\\Desktop\\Gorev\\Backend\\DOMAIN\\DOMAIN.csproj"
             }
           }
         }
@@ -1899,7 +1901,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
