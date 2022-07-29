@@ -14,6 +14,8 @@ import ConfirmLayout from '../Routers/ConfirmLayout';
 import ConfirmEmail from '../Components/ConfirmEmail';
 import PrivateRoute from '../auth/privateRoute';
 import CreateTask from '../Components/CreateTask';
+import ListTask from '../Components/ListTask';
+
 
 
 const App = () =>{
@@ -33,11 +35,21 @@ const App = () =>{
                 <CreateTask/>
               </PrivateRoute>}
             />  
-             <Route path="/gorevolustur" element={
+            <Route path="/gorevolustur" element={
               <PrivateRoute pageRoles={["Yönetici"]}>
                 <CreateTask/>
               </PrivateRoute>}
-            />  
+            /> 
+            <Route path="/listtask" element={
+              <PrivateRoute pageRoles={["Yönetici","Personel"]}>
+                <ListTask/>
+              </PrivateRoute>}
+            />   
+            <Route path="/gorevlistele" element={
+              <PrivateRoute pageRoles={["Yönetici","Personel"]}>
+                <ListTask/>
+              </PrivateRoute>}
+            />
           </Route>
           <Route element={<ConfirmLayout />}>
             <Route path="/ConfirmEmail/:state" element={

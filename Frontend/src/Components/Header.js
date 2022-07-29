@@ -30,6 +30,17 @@ const Header = (props) => {
   </li>:<></>
   }
 
+{props.User.isAuthenticated === true && (props.User.roles.indexOf("Yönetici") !== -1 || props.User.roles.indexOf("Personel") !== -1)?
+  <li className="nav-item">
+    <Link className="nav-link text-white" to="/listtask">
+        <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i className="material-icons opacity-10">list</i>
+        </div>
+        <span className="nav-link-text ms-1">Görev Listele</span>
+    </Link>
+  </li>:<></>
+  }
+
 <li className="nav-item">
 <a className="nav-link text-white " href="./dashboard.html">
   

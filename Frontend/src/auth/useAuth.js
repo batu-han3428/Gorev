@@ -6,7 +6,7 @@ import {getCookie} from '../helpers/cookie';
 export const onLogin = (cookieName = null) => {
 
   let cookie = getCookie(cookieName);
- 
+
   if(cookie.key !== '' && cookie.value !== undefined){
     var auth = decodeToken(cookie.value);
     let exp = new Date(auth.exp * 1000);
