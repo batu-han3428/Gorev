@@ -87,7 +87,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("[action]")]
-        //[Authorize]
+        [Authorize]
         public IActionResult ListTask(int UserId)
         {
             if (UserId == 0) return BadRequest();

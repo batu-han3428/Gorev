@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => {
-    policy.WithOrigins(new[] { "http://localhost:3000", "https://localhost:3000", "https://172.34.1.78:3000", "https://localhost:3001" })
+    policy.WithOrigins(new[] { "http://localhost:3000", "https://localhost:3000", "https://172.34.1.78:3000", "https://localhost:3001", "http://127.0.0.1:5500" })
             .AllowAnyHeader()
             .AllowAnyMethod()
                 .AllowCredentials();
@@ -48,6 +48,7 @@ builder.Services.AddScoped<ITaskServices, TaskServices>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 var app = builder.Build();
 

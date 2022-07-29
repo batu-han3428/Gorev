@@ -9,8 +9,9 @@ namespace Common.ViewModels
 {
     public class ListTaskViewModel
     {
+        public int Id { get; set; }
         public string Assigned { get; set; }
-        public int Constituent { get; set; }
+        public string Constituent { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public bool Priority { get; set; }

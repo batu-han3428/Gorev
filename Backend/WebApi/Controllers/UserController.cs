@@ -88,7 +88,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<HttpStatusCode> Login(UserLoginDTO userLoginDTO)
+        public HttpStatusCode Login(UserLoginDTO userLoginDTO)
         {
             var result = _userServices.UserLogin(userLoginDTO, configuration);
             if (result.Item1 == 403)
