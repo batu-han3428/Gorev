@@ -10,10 +10,7 @@ import Main from "../Components/Main";
 const Layout = (props) => {
   useEffect(()=>{
     let result = onLogin("AccessToken");
-    if(result === false){
-      onLogout();
-      props.dispatch(logoutuser()); 
-    }else{
+    if(result !== false){
       props.dispatch(loginuser(result)); 
     }
   },[])

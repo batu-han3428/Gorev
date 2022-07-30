@@ -20,7 +20,7 @@ const CreateTask = (props) => {
     
     useEffect(()=>{
         setExpiryTime(new Date().toISOString().slice(0, 10))
-        get('User/GetEmployees/','CompanyId',props.User.companyId)
+        get('User/GetEmployees/','CompanyId',props.User.companyId === ""?"0":props.User.companyId)
         .then(resp=>{
           if(resp.data === "Beklenmeyen bir hata oluştu!")
             swal(resp.data, "", "error");
@@ -32,7 +32,7 @@ const CreateTask = (props) => {
 
   
     const inputControl = () => {
-      if(title == "" || description == "" || appointedPersonnel == "" || expiryTime == "")
+      if(title === "" || description === "" || appointedPersonnel === "" || appointedPersonnel === 'DEFAULT' || expiryTime === "")
         return true;
       else
         return false;

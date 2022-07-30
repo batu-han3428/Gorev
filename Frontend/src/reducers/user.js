@@ -33,6 +33,7 @@ const userReducer = (state = user, action) => {
                 companyId:'',
                 userId:''
             }
+         
         default:
             return state;
     }

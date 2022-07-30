@@ -15,6 +15,8 @@ import ConfirmEmail from '../Components/ConfirmEmail';
 import PrivateRoute from '../auth/privateRoute';
 import CreateTask from '../Components/CreateTask';
 import ListTask from '../Components/ListTask';
+import ListCompany from '../Components/ListCompany';
+import CreateCompany from '../Components/CreateCompany';
 
 
 
@@ -24,30 +26,50 @@ const App = () =>{
       <Routes>
           <Route exact element={<Layout />}>
             <Route exact path="/" element={<Home/>} />
-            <Route path="/home" element={<Home/>} />
-            <Route path="/ev" element={<Home/>} />
+            <Route exact path="/home" element={<Home/>} />
+            <Route exact path="/ev" element={<Home/>} />
             <Route path="/signin" element={<SignIn/>} />
             <Route path="/giris" element={<SignIn/>} />
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/kayit" element={<SignUp/>} />
             <Route path="/createtask" element={
-              <PrivateRoute pageRoles={["Yönetici"]}>
+              <PrivateRoute pageRoles={["Yönetici","Admin"]}>
                 <CreateTask/>
               </PrivateRoute>}
             />  
             <Route path="/gorevolustur" element={
-              <PrivateRoute pageRoles={["Yönetici"]}>
+              <PrivateRoute pageRoles={["Yönetici","Admin"]}>
                 <CreateTask/>
               </PrivateRoute>}
             /> 
             <Route path="/listtask" element={
-              <PrivateRoute pageRoles={["Yönetici","Personel"]}>
+              <PrivateRoute pageRoles={["Yönetici","Personel","Admin"]}>
                 <ListTask/>
               </PrivateRoute>}
             />   
             <Route path="/gorevlistele" element={
-              <PrivateRoute pageRoles={["Yönetici","Personel"]}>
+              <PrivateRoute pageRoles={["Yönetici","Personel","Admin"]}>
                 <ListTask/>
+              </PrivateRoute>}
+            />
+            <Route path="/company" element={
+              <PrivateRoute pageRoles={["Admin"]}>
+                <ListCompany/>
+              </PrivateRoute>}
+            />
+            <Route path="/sirket" element={
+              <PrivateRoute pageRoles={["Admin"]}>
+                <ListCompany/>
+              </PrivateRoute>}
+            />
+             <Route path="/createcompany" element={
+              <PrivateRoute pageRoles={["Admin"]}>
+                <CreateCompany/>
+              </PrivateRoute>}
+            />
+             <Route path="/sirketolustur" element={
+              <PrivateRoute pageRoles={["Admin"]}>
+                <CreateCompany/>
               </PrivateRoute>}
             />
           </Route>
@@ -58,7 +80,7 @@ const App = () =>{
               </PrivateRoute>
             } />
           </Route>
-          <Route path="/logout" element={<Logout />} />
+          <Route exact path="/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>
   );

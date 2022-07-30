@@ -32,3 +32,19 @@ export const get = async (url, title, value, token = null) =>{
         return {data:"Beklenmeyen bir hata oluştu!"}
     }
 }
+
+export const getnoquery = async (url, token = null) =>{
+  try {
+      var config = {
+          headers: { 
+            'Authorization': `Bearer ${token}`, 
+            'Content-Type': 'application/json'     
+          }
+        };
+
+      return await (await Axios.get('https://localhost:7261/api/'+url, config)).data; 
+  }
+  catch(err) {
+      return {data:"Beklenmeyen bir hata oluştu!"}
+  }
+}

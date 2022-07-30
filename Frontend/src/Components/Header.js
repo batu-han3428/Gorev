@@ -19,7 +19,7 @@ const Header = (props) => {
 
 <div className="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
   <ul className="navbar-nav">
-  {props.User.isAuthenticated === true && props.User.roles.indexOf("Yönetici") !== -1?
+  {props.User.isAuthenticated === true && (props.User.roles.indexOf("Yönetici") !== -1 || props.User.roles.indexOf("Admin") !== -1)?
   <li className="nav-item">
     <Link className="nav-link text-white" to="/createtask">
         <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -30,7 +30,7 @@ const Header = (props) => {
   </li>:<></>
   }
 
-{props.User.isAuthenticated === true && (props.User.roles.indexOf("Yönetici") !== -1 || props.User.roles.indexOf("Personel") !== -1)?
+{props.User.isAuthenticated &&
   <li className="nav-item">
     <Link className="nav-link text-white" to="/listtask">
         <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -38,80 +38,19 @@ const Header = (props) => {
         </div>
         <span className="nav-link-text ms-1">Görev Listele</span>
     </Link>
-  </li>:<></>
+  </li>
   }
 
-<li className="nav-item">
-<a className="nav-link text-white " href="./dashboard.html">
-  
-    <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <i className="material-icons opacity-10">dashboard</i>
-    </div>
-  
-  <span className="nav-link-text ms-1">Dashboard</span>
-</a>
-</li>
-
-
-<li className="nav-item">
-<a className="nav-link text-white " href="./tables.html">
-  
-    <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <i className="material-icons opacity-10">table_view</i>
-    </div>
-  
-  <span className="nav-link-text ms-1">Tables</span>
-</a>
-</li>
-
-
-<li className="nav-item">
-<a className="nav-link text-white " href="./billing.html">
-  
-    <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <i className="material-icons opacity-10">receipt_long</i>
-    </div>
-  
-  <span className="nav-link-text ms-1">Billing</span>
-</a>
-</li>
-
-
-<li className="nav-item">
-<a className="nav-link text-white " href="./virtual-reality.html">
-  
-    <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <i className="material-icons opacity-10">view_in_ar</i>
-    </div>
-  
-  <span className="nav-link-text ms-1">Virtual Reality</span>
-</a>
-</li>
-
-
-<li className="nav-item">
-<a className="nav-link text-white " href="./rtl.html">
-  
-    <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <i className="material-icons opacity-10">format_textdirection_r_to_l</i>
-    </div>
-  
-  <span className="nav-link-text ms-1">RTL</span>
-</a>
-</li>
-
-
-<li className="nav-item">
-<a className="nav-link text-white " href="./notifications.html">
-  
-    <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
-      <i className="material-icons opacity-10">notifications</i>
-    </div>
-  
-  <span className="nav-link-text ms-1">Notifications</span>
-</a>
-</li>
-
+{props.User.isAuthenticated === true && props.User.roles.indexOf("Admin") !== -1?
+  <li className="nav-item">
+  <Link className="nav-link text-white" to="/company">
+      <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
+        <i className="material-icons opacity-10">business</i>
+      </div>
+      <span className="nav-link-text ms-1">Şirketler</span>
+  </Link>
+</li>:<></>
+  }
 
   <li className="nav-item mt-3">
     <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
@@ -164,13 +103,6 @@ const Header = (props) => {
       
     
   </ul>
-</div>
-
-<div className="sidenav-footer position-absolute w-100 bottom-0 ">
-  <div className="mx-3">
-    <a className="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
-  </div>
-  
 </div>
 
         </aside>
