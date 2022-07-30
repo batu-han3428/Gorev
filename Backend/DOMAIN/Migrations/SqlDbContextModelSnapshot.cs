@@ -185,6 +185,17 @@ namespace DOMAIN.Migrations
                     b.HasIndex("CompaniesId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin",
+                            IsConfirmEmail = true,
+                            Name = "",
+                            Password = "0DPiKuNIrrVmD8IUCuw1hQxNqZc=",
+                            Surname = ""
+                        });
                 });
 
             modelBuilder.Entity("DOMAIN.Models.UserRole", b =>
@@ -200,6 +211,13 @@ namespace DOMAIN.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("DOMAIN.Models.Document", b =>

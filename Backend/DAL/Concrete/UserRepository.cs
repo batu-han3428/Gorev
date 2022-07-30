@@ -12,7 +12,10 @@ namespace DAL.Concrete
     {
         public List<User> GetEmployees(int CompanyId)
         {
-            return context.Users.Where(x=>x.Companies.Id == CompanyId).ToList();
+            if (context.Users.Any(x => x.Companies.Id == CompanyId && x.Companies.Id != null))
+                return context.Users.Where(x => x.Companies.Id == CompanyId && x.Companies.Id != null).ToList();
+            else
+                return null;
         }
     }
 }

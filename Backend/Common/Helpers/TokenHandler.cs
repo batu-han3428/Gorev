@@ -68,9 +68,15 @@ namespace Common.Helpers
 
         public Token CreateEmailConfirmToken()
         {
-            List<Claim> claims = new List<Claim>();
+            //List<Claim> claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.Role, "api"));
+            //claims.Add(new Claim(ClaimTypes.Role, "api"));
+
+            List<string> roles = new List<string>();
+
+            
+             roles.Add("api");
+            
 
             Token tokenInstance = new Token();
 
@@ -83,7 +89,7 @@ namespace Common.Helpers
             JwtSecurityToken securityToken = new JwtSecurityToken(issuer: Configuration["Token:Issuer"], audience: Configuration["Token:Audience"], expires: tokenInstance.Expiration, notBefore: DateTime.Now, signingCredentials: signingCredentials);
 
 
-            securityToken.Payload["roles"] = claims;
+            securityToken.Payload["roles"] = roles;
 
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();

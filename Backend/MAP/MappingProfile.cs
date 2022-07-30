@@ -23,6 +23,8 @@ namespace MAP
             );
             CreateMap<DOMAIN.Models.Task, Common.ViewModels.ListTaskViewModel>();
             CreateMap<DOMAIN.Models.Document, Common.ViewModels.DocumentViewModel>();
+            CreateMap<Common.DTO.CompanyDTO, DOMAIN.Models.Companies>();
+            CreateMap<DOMAIN.Models.Companies, Common.ViewModels.ListCompaniesViewModel>();
         }
     }
 }

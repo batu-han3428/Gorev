@@ -24,6 +24,13 @@ namespace DOMAIN.Helpers
                    new Role() { Id = 2, Name = "Yönetici" },
                    new Role() { Id = 3, Name = "Personel" }
             );
+
+            modelBuilder.Entity<User>().HasData(
+                   new User() { Id = 1, Name = "", Surname = "", Email = "admin", Password = "0DPiKuNIrrVmD8IUCuw1hQxNqZc=", RefreshToken = null, RefrestTokenEndDate = null, IsConfirmEmail=true, ConfirmEmailToken = null, Companies = null}   
+            );
+            modelBuilder.Entity<UserRole>().HasData(
+                new UserRole() { RoleId = 1, UserId = 1 }
+                );
         }
     }
 

@@ -12,6 +12,6 @@ namespace DOMAIN.Models
         public int TaskId { get; set; }
         public DOMAIN.Models.Task Task { get; set; } 
         public string Name { get; set; }
-        public Byte[] Data { get; set; }
+        public byte[] Data { get; set; }
     }
 }

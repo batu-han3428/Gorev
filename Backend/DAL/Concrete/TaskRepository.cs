@@ -21,19 +21,24 @@ namespace DAL.Concrete
             if (context.UserRoles.Any(x => x.UserId == UserId && x.RoleId == 2))
             {
 
-                int companiesId = context.Users.Where(x => x.Id == UserId).Select(x => x.Companies.Id).FirstOrDefault();
+                int companiesId = context.Users.Where(x => x.Id == UserId && x.Companies.Id != null).Select(x => x.Companies.Id).FirstOrDefault();
 
-                tasksList1 = context.Tasks.Where(x => x.User.Companies.Id == companiesId).Include(x => x.User).ThenInclude(x => x.Companies).Include(x => x.Documents).Select(x => new ListTaskViewModel
+                if(companiesId != null)
                 {
-                    Assigned = x.User.Name,
-                    Constituent = context.Users.Where(c => c.Id == x.Constituent && x.User.Companies.Id == companiesId).Select(v=>v.Name).FirstOrDefault(),
-                    Title = x.Title,
-                    Description = x.Description,
-                    Priority = x.Priority,
-                    Urgency = x.Urgency,
-                    CompletionTime = x.CompletionTime,
-                    DocumentViewModels = x.Documents.ToList()
-                }).ToList();
+                    tasksList1 = context.Tasks.Where(x => x.User.Companies.Id == companiesId).Include(x => x.User).ThenInclude(x => x.Companies).Include(x => x.Documents).Select(x => new ListTaskViewModel
+                    {
+                        Assigned = x.User.Name,
+                        Constituent = context.Users.Where(c => c.Id == x.Constituent && x.User.Companies.Id == companiesId).Select(v => v.Name).FirstOrDefault(),
+                        Title = x.Title,
+                        Description = x.Description,
+                        Priority = x.Priority,
+                        Urgency = x.Urgency,
+                        CompletionTime = x.CompletionTime,
+                        DocumentViewModels = x.Documents.ToList()
+                    }).ToList();
+                }
+
+                return null;
 
             }
             else

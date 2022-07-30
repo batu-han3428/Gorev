@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Text;
 using Common.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -117,7 +118,21 @@ namespace WebApi.Controllers
             if (result != null)
                 return Ok(_mapper.Map<List<Common.ViewModels.EmployeesViewModel>>(result));
             else
-                return BadRequest();
+                return Ok(new string[0]);
+        }
+
+        [HttpDelete("[action]")]
+        [Authorize]
+        public HttpStatusCode Logout()
+        {
+            if (Request.Cookies["AccessToken"] != null)
+            {
+                Response.Cookies.Delete("AccessToken");
+
+                return HttpStatusCode.OK;
+            }
+            else
+                return HttpStatusCode.BadRequest;
         }
     }
 }

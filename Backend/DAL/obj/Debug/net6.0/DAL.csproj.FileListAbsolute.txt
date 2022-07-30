@@ -62,3 +62,7 @@ C:\Users\bfindik\Desktop\Gorev\Backend\DAL\bin\Debug\net6.0\DAL.runtimeconfig.js
 C:\Users\bfindik\Desktop\Gorev\Backend\DAL\bin\Debug\net6.0\Common.dll
 C:\Users\bfindik\Desktop\Gorev\Backend\DAL\bin\Debug\net6.0\Common.pdb
 C:\Users\bfindik\Desktop\Gorev\Backend\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache
+C:\Users\batu_\Desktop\Gorev\Backend\DAL\bin\Debug\net6.0\DAL.runtimeconfig.json
+C:\Users\batu_\Desktop\Gorev\Backend\DAL\bin\Debug\net6.0\Common.dll
+C:\Users\batu_\Desktop\Gorev\Backend\DAL\bin\Debug\net6.0\Common.pdb
+C:\Users\batu_\Desktop\Gorev\Backend\DAL\obj\Debug\net6.0\DAL.genruntimeconfig.cache

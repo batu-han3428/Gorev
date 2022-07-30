@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DOMAIN.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20220728140816_initDb3")]
+    [Migration("20220730071616_initDb3")]
     partial class initDb3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,6 +187,17 @@ namespace DOMAIN.Migrations
                     b.HasIndex("CompaniesId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin",
+                            IsConfirmEmail = true,
+                            Name = "",
+                            Password = "0DPiKuNIrrVmD8IUCuw1hQxNqZc=",
+                            Surname = ""
+                        });
                 });
 
             modelBuilder.Entity("DOMAIN.Models.UserRole", b =>
@@ -202,6 +213,13 @@ namespace DOMAIN.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("DOMAIN.Models.Document", b =>
